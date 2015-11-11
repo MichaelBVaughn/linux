@@ -118,7 +118,7 @@ static int ext2_create (struct inode * dir, struct dentry * dentry, umode_t mode
 	mark_inode_dirty(inode);
 	return ext2_add_nondir(dentry, inode);
 }
-
+/*
 static int ext2_mknod (struct inode * dir, struct dentry *dentry, umode_t mode, dev_t rdev)
 {
 	struct inode * inode;
@@ -141,7 +141,8 @@ static int ext2_mknod (struct inode * dir, struct dentry *dentry, umode_t mode, 
 	}
 	return err;
 }
-
+*/
+/*
 static int ext2_symlink (struct inode * dir, struct dentry * dentry,
 	const char * symname)
 {
@@ -161,7 +162,7 @@ static int ext2_symlink (struct inode * dir, struct dentry * dentry,
 		goto out;
 
 	if (l > sizeof (EXT2_I(inode)->i_data)) {
-		/* slow symlink */
+		/ * slow symlink * /
 		inode->i_op = &ext2_symlink_inode_operations;
 		if (test_opt(inode->i_sb, NOBH))
 			inode->i_mapping->a_ops = &ext2_nobh_aops;
@@ -171,7 +172,7 @@ static int ext2_symlink (struct inode * dir, struct dentry * dentry,
 		if (err)
 			goto out_fail;
 	} else {
-		/* fast symlink */
+		/ * fast symlink * /
 		inode->i_op = &ext2_fast_symlink_inode_operations;
 		memcpy((char*)(EXT2_I(inode)->i_data),symname,l);
 		inode->i_size = l-1;
@@ -188,7 +189,8 @@ out_fail:
 	iput (inode);
 	goto out;
 }
-
+*/
+/*
 static int ext2_link (struct dentry * old_dentry, struct inode * dir,
 	struct dentry *dentry)
 {
@@ -210,7 +212,8 @@ static int ext2_link (struct dentry * old_dentry, struct inode * dir,
 	iput(inode);
 	return err;
 }
-
+*/
+/*
 static int ext2_mkdir(struct inode * dir, struct dentry * dentry, umode_t mode)
 {
 	struct inode * inode;
@@ -280,7 +283,8 @@ static int ext2_unlink(struct inode * dir, struct dentry *dentry)
 out:
 	return err;
 }
-
+*/
+/*
 static int ext2_rmdir (struct inode * dir, struct dentry *dentry)
 {
 	struct inode * inode = dentry->d_inode;
@@ -296,7 +300,8 @@ static int ext2_rmdir (struct inode * dir, struct dentry *dentry)
 	}
 	return err;
 }
-
+*/
+/*
 static int ext2_rename (struct inode * old_dir, struct dentry * old_dentry,
 	struct inode * new_dir,	struct dentry * new_dentry )
 {
@@ -347,10 +352,10 @@ static int ext2_rename (struct inode * old_dir, struct dentry * old_dentry,
 			inode_inc_link_count(new_dir);
 	}
 
-	/*
+	/ *
 	 * Like most other Unix systems, set the ctime for inodes on a
  	 * rename.
-	 */
+	 * /
 	old_inode->i_ctime = CURRENT_TIME_SEC;
 	mark_inode_dirty(old_inode);
 
@@ -379,7 +384,7 @@ out_old:
 out:
 	return err;
 }
-
+*/
 const struct inode_operations ext2_dir_inode_operations = {
 	.create		= ext2_create,
 	.lookup		= ext2_lookup,

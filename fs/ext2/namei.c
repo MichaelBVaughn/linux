@@ -118,6 +118,11 @@ static int ext2_create (struct inode * dir, struct dentry * dentry, umode_t mode
 	mark_inode_dirty(inode);
 	return ext2_add_nondir(dentry, inode);
 }
+
+static int ext2_mknod (struct inode * dir, struct dentry *dentry, umode_t mode, dev_t rdev){
+  return -ENOTTY; /* sure, why not? */
+}
+
 /*
 static int ext2_mknod (struct inode * dir, struct dentry *dentry, umode_t mode, dev_t rdev)
 {
@@ -142,6 +147,11 @@ static int ext2_mknod (struct inode * dir, struct dentry *dentry, umode_t mode, 
 	return err;
 }
 */
+
+static int ext2_symlink (struct inode * dir, struct dentry * dentry,
+			 	const char * symname)
+  return -ENOTTY;
+}
 /*
 static int ext2_symlink (struct inode * dir, struct dentry * dentry,
 	const char * symname)
@@ -190,6 +200,11 @@ out_fail:
 	goto out;
 }
 */
+static int ext2_link (struct dentry * old_dentry, struct inode * dir,
+	struct dentry *dentry)
+{
+  return -ENOTTY;
+}
 /*
 static int ext2_link (struct dentry * old_dentry, struct inode * dir,
 	struct dentry *dentry)
@@ -213,6 +228,10 @@ static int ext2_link (struct dentry * old_dentry, struct inode * dir,
 	return err;
 }
 */
+static int ext2_mkdir(struct inode * dir, struct dentry * dentry, umode_t mode)
+{
+  return -ENOTTY;
+}
 /*
 static int ext2_mkdir(struct inode * dir, struct dentry * dentry, umode_t mode)
 {
@@ -259,7 +278,12 @@ out_dir:
 	inode_dec_link_count(dir);
 	goto out;
 }
-
+*/
+static int ext2_unlink(struct inode * dir, struct dentry *dentry)
+{
+  return -ENOTTY;
+}
+/*
 static int ext2_unlink(struct inode * dir, struct dentry *dentry)
 {
 	struct inode * inode = dentry->d_inode;
@@ -284,6 +308,10 @@ out:
 	return err;
 }
 */
+static int ext2_rmdir (struct inode * dir, struct dentry *dentry)
+{
+  return -ENOTTY;
+}
 /*
 static int ext2_rmdir (struct inode * dir, struct dentry *dentry)
 {
@@ -301,6 +329,11 @@ static int ext2_rmdir (struct inode * dir, struct dentry *dentry)
 	return err;
 }
 */
+static int ext2_rename (struct inode * old_dir, struct dentry * old_dentry,
+			struct inode * new_dir,	struct dentry * new_dentry )
+{
+  return -ENOTTY;
+}
 /*
 static int ext2_rename (struct inode * old_dir, struct dentry * old_dentry,
 	struct inode * new_dir,	struct dentry * new_dentry )

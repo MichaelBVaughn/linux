@@ -279,11 +279,8 @@ out_dir:
 	goto out;
 }
 */
-static int ext2_unlink(struct inode * dir, struct dentry *dentry)
-{
-  return -ENOTTY;
-}
-/*
+
+
 static int ext2_unlink(struct inode * dir, struct dentry *dentry)
 {
 	struct inode * inode = dentry->d_inode;
@@ -307,7 +304,7 @@ static int ext2_unlink(struct inode * dir, struct dentry *dentry)
 out:
 	return err;
 }
-*/
+
 static int ext2_rmdir (struct inode * dir, struct dentry *dentry)
 {
   return -ENOTTY;
